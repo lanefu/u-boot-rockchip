@@ -329,7 +329,6 @@ int fastboot_set_reboot_flag(enum fastboot_reboot_reason reason)
 }
 #endif
 
-#ifdef CONFIG_MISC_INIT_R
 int rockchip_setup_macaddr(void)
 {
 #if CONFIG_IS_ENABLED(HASH) && CONFIG_IS_ENABLED(SHA256)
