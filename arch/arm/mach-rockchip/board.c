@@ -448,7 +448,6 @@ __weak int rockchip_early_misc_init_r(void)
 	return 0;
 }
 
-__weak int misc_init_r(void)
 #if defined(CONFIG_MISC_INIT_R) || defined(CONFIG_NET_BOARD_ETHADDR)
 static int set_cpuid(void)
 {
@@ -456,14 +455,6 @@ static int set_cpuid(void)
 	const u32 cpuid_length = 0x10;
 	u8 cpuid[cpuid_length];
 	int ret;
-
-	ret = rockchip_early_misc_init_r();
-	if (ret)
-		return ret;
-
-	ret = rockchip_cpuid_from_efuse(cpuid_offset, cpuid_length, cpuid);
-	if (ret)
-		return ret;
 
 	ret = rockchip_cpuid_set(cpuid, cpuid_length);
 
